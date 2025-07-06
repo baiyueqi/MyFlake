@@ -9,17 +9,13 @@
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # wonder foundations
-    wonder-foundations.url =
-      "git+ssh://git@github.com/quant-wonderland/wonder-foundations?ref=dev/24.11";
-    wonder-foundations.inputs.nixpkgs.follows = "nixpkgs";
-    wonder-foundations.inputs.home-manager.follows = "home-manager";
-
     home-manager.url = "github:nix-community/home-manager?ref=release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    ml-pkgs.url = "github:nixvital/ml-pkgs";
-    ml-pkgs.inputs.nixpkgs.follows = "nixpkgs";
+    wsl.url =
+      "github:nix-community/NixOS-WSL?rev=34eda458bd3f6bad856a99860184d775bc1dd588";
+    wsl.inputs.nixpkgs.follows = "nixpkgs";
+
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, wonder-foundations, home-manager
@@ -57,84 +53,17 @@
         wsl = nixpkgs.lib.nixosSystem rec {
           inherit system;
           modules = [
-            wonder-foundations.nixosModules.foundation
-            wonder-foundations.nixosModules.home-manager
-            wonder-foundations.nixosModules.devopsTools
+            inputs.home-manager.nixosModules.home-manager
+            inputs.wsl.nixosModules.wsl
             ./machines/wsl
-            ({
-              nixpkgs.overlays =
-                [ (final: prev: { duckdb = pkgs-unstable.duckdb; }) ];
-            })
-
+            # ({
+            #   nixpkgs.overlays =
+            #     [ (final: prev: { duckdb = pkgs-unstable.duckdb; }) ];
+            # })
           ];
         };
-
-        home-wsl = nixpkgs.lib.nixosSystem rec {
-          inherit system;
-          modules = [
-            wonder-foundations.nixosModules.foundation
-            wonder-foundations.nixosModules.home-manager
-            wonder-foundations.nixosModules.devopsTools
-            ./machines/wsl/home-wsl.nix
-          ];
-        };
-
-        dev = nixpkgs.lib.nixosSystem rec {
-          inherit system;
-          modules = [
-            wonder-foundations.nixosModules.foundation
-            wonder-foundations.nixosModules.home-manager
-            wonder-foundations.nixosModules.devopsTools
-            ./machines/dev
-          ];
-        };
-
-        nas = nixpkgs.lib.nixosSystem rec {
-          inherit system;
-          modules = [
-            wonder-foundations.nixosModules.foundation
-            wonder-foundations.nixosModules.home-manager
-            wonder-foundations.nixosModules.devopsTools
-            ./machines/nas
-          ];
-        };
-
-        demo-vm = nixpkgs.lib.nixosSystem rec {
-          inherit system;
-          modules = [ ./machines/demo-vm ];
-        };
-
       };
-
-      # "https://nix-community.github.io/home-manager/release-notes.html" # sec-release-22.11-highlights
-      homeConfigurations.lxb = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./home/default.nix
-          {
-            home = {
-              username = "lxb";
-              homeDirectory = "/home/lxb";
-              stateVersion = "22.11";
-            };
-          }
-        ];
-      };
-
-      homeConfigurations.macos = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs-macos;
-        modules = [
-          ./home/default.nix
-          {
-            home = {
-              username = "lhh";
-              homeDirectory = "/Users/lhh";
-              stateVersion = "22.11";
-            };
-          }
-        ];
-      };
-
+    
       homeConfigurations.nixos = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
@@ -143,20 +72,6 @@
             home = {
               username = "nixos";
               homeDirectory = "/home/nixos";
-              stateVersion = "22.11";
-            };
-          }
-        ];
-      };
-
-      homeConfigurations.wonder = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./home/default.nix
-          {
-            home = {
-              username = "wonder";
-              homeDirectory = "/home/wonder";
               stateVersion = "22.11";
             };
           }

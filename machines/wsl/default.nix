@@ -1,16 +1,11 @@
 { lib, pkgs, config, modulesPath, ... }:
 with lib;
-let
-  nixos-wsl = import ./nixos-wsl;
-  baseParams = config.wonder.baseParams;
-  vitalParams = config.wonder.vitalParams;
-in {
+{
   imports = [
     "${modulesPath}/profiles/minimal.nix"
-    nixos-wsl.nixosModules.wsl
     ../../modules/systemPackages.nix
     ../../modules/network.nix
-    ../../modules/service/jupyter
+    # ../../modules/service/jupyter
   ];
 
   # File system "/boot" is not a FAT EFI System Partition (ESP) file system.
