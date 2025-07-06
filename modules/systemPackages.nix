@@ -49,7 +49,7 @@
     # fcitx5
     # graphviz
     # dpkg
-    nixfmt
+    nixfmt-classic
     # tree
     # ncdu
     # ripgrep

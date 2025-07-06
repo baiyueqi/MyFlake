@@ -1,6 +1,5 @@
 { lib, pkgs, config, modulesPath, ... }:
-with lib;
-{
+with lib; {
   imports = [
     "${modulesPath}/profiles/minimal.nix"
     ../../modules/systemPackages.nix
@@ -19,7 +18,7 @@ with lib;
   };
 
   users.users.nixos.shell = pkgs.fish;
-  
+
   programs.fish.enable = true;
 
   programs.nix-ld.enable = true;
@@ -35,6 +34,5 @@ with lib;
       experimental-features = nix-command flakes
     '';
   };
-
 
 }
