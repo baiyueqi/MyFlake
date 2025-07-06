@@ -39,17 +39,17 @@
     # graphviz
     # wget
     # vim
-    # cmake
+    cmake
     # python
     # neovim
     # git
-    # gdb
+    gdb
     # docker
     # ibus
     # fcitx5
     # graphviz
     # dpkg
-    # nixfmt
+    nixfmt
     # tree
     # ncdu
     # ripgrep
@@ -57,7 +57,7 @@
     # linuxPackages.cpupower
     # dmidecode
     # black
-    # cpu-x
+    cpu-x
     # unrar
     # p7zip
     # rclone
