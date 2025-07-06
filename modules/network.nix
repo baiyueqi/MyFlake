@@ -3,7 +3,7 @@
 {
   # networking.useDHCP = false;
 
-  networking.hostName = "lhh";
+  networking.hostName = "baining";
   # head -c 8 /etc/machine-id
   # networking.hostId = "7dc1a3e5";
 

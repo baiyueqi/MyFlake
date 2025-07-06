@@ -3,71 +3,73 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Python
-    python3
-    (python3.withPackages (ps:
-      with ps; [
-        jupyter
-        jupyter_core
-        notebook
-        ipython
-        ipykernel
-        pandas
-        numpy
-        systemd
-        click
-        jinja2
-        clickhouse-driver
-        flask
-        autopep8
-        pip
-        pyyaml
-        pytz
-        websockets
-        black
-        beancount
-        PyGithub
-        paramiko
-        xmltodict
-        lark
-        openpyxl
-        xlrd
-        requests
-      ]))
-    gparted
-    jq
-    ntp
-    graphviz
-    wget
-    vim
-    cmake
-    python
-    neovim
-    git
-    gdb
-    docker
-    ibus
-    fcitx5
-    graphviz
-    dpkg
-    nixfmt
-    tree
-    ncdu
-    ripgrep
-    libev
-    linuxPackages.cpupower
-    dmidecode
-    black
-    cpu-x
-    unrar
-    p7zip
-    rclone
-    rsync
-    parted
-    ethtool
-    iperf
-    nvme-cli
-    smartmontools
-    cifs-utils
+    # python3
+    # (python3.withPackages (ps:
+    #   with ps; [
+    #     jupyter
+    #     jupyter_core
+    #     notebook
+    #     ipython
+    #     ipykernel
+    #     pandas
+    #     numpy
+    #     systemd
+    #     click
+    #     jinja2
+    #     clickhouse-driver
+    #     flask
+    #     autopep8
+    #     pip
+    #     pyyaml
+    #     pytz
+    #     websockets
+    #     black
+    #     beancount
+    #     PyGithub
+    #     paramiko
+    #     xmltodict
+    #     lark
+    #     openpyxl
+    #     xlrd
+    #     requests
+    #   ]))
+    # gparted
+    # jq
+    # ntp
+    # graphviz
+    # wget
+    # vim
+    # cmake
+    # python
+    # neovim
+    # git
+    # gdb
+    # docker
+    # ibus
+    # fcitx5
+    # graphviz
+    # dpkg
+    # nixfmt
+    # tree
+    # ncdu
+    # ripgrep
+    # libev
+    # linuxPackages.cpupower
+    # dmidecode
+    # black
+    # cpu-x
+    # unrar
+    # p7zip
+    # rclone
+    # rsync
+    # parted
+    # ethtool
+    # iperf
+    # nvme-cli
+    # smartmontools
+    # cifs-utils
+    glances
+    htop
   ];
 
   nixpkgs.config = {
