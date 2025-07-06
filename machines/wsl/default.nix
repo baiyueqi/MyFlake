@@ -22,6 +22,8 @@ with lib;
   
   programs.fish.enable = true;
 
+  programs.nix-ld.enable = true;
+
   nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "24.11";
