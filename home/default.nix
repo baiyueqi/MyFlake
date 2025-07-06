@@ -2,7 +2,7 @@
 
 {
   # <install home-manager>
-  # home-manager build --flake .#lxb
+  # home-manager build --flake .#nixos
   # home-manager switch --flake 'git+ssh://git@github.com/liuhh666233/MyFlake#lxb' 
 
   # <install oh my fish>
@@ -11,11 +11,11 @@
   # omf theme lambda
   imports = [ ];
 
-  nixpkgs.config.permittedInsecurePackages = [ "nodejs-16.20.2" ];
+  # nixpkgs.config.permittedInsecurePackages = [ "nodejs-16.20.2" ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["tokenizer.json"];
 
-  home.packages = [ pkgs.fd pkgs.oh-my-fish pkgs.goose-cli];
+  home.packages = [ pkgs.fd pkgs.oh-my-fish];
 
   # https://github.com/NixOS/nixpkgs/issues/196651
   # Fix /nix/store/0czacppvzvmiyx32p7j1d5p9mvjvsi0l-manual-combined/manual-combined.xml fails to validate

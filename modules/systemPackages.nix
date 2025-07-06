@@ -70,6 +70,8 @@
     # cifs-utils
     glances
     htop
+    home-manager
+    translate-shell
   ];
 
   nixpkgs.config = {

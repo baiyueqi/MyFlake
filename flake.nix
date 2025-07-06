@@ -26,7 +26,7 @@
         inherit system;
         config.allowUnfree = true;
         config.allowBroken = true;
-        overlays = [ inputs.ml-pkgs.overlays.gen-ai ];
+        overlays = [ ];
       };
       pkgs-unstable = import nixpkgs-unstable {
         inherit system;
@@ -72,7 +72,7 @@
             home = {
               username = "nixos";
               homeDirectory = "/home/nixos";
-              stateVersion = "22.11";
+              stateVersion = "24.11";
             };
           }
         ];
